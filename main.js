@@ -53,7 +53,7 @@ async function loadStations(url) {
         onEachFeature: function (feature, layer) {
             console.log(feature.properties);
             layer.bindPopup(`
-                <h4>${feature.properties.name}</h4>
+                <h4>${feature.properties.name} (${feature.geometry.coordinates[2]}m)</h4>
                
                 `);
         }
