@@ -130,11 +130,32 @@ function showDirection(jsondata) {
 
         },
         pointToLayer: function (feature, latlng) {
+            let iconName;
+
+            if (feature.properties.WR == 90) {
+                iconName = "O";
+            } else if (feature.properties.WR > 90 && feature.properties.WR < 180) {
+                iconName = "SO";
+            } else if (feature.properties.WR == 180) {
+                iconName = "S";
+            } else if (feature.properties.WR > 180 && feature.properties.WR < 270) {
+                iconName = "SW";
+            } else if (feature.properties.WR == 270) {
+                iconName = "W";
+            } else if (feature.properties.WR > 270 && feature.properties.WR < 360) {
+                iconName = "NW";
+            } else if (feature.properties.WR == 360) {
+                iconName = "N";
+            } else if (feature.properties.WR > 0 && feature.properties.WR < 90) {
+                iconName = "NO";
+            } else {
+                iconName = "noData";
+            }
             let color = getColor(feature.properties.WG, COLORS.wind);
             return L.marker(latlng, {
                 icon: L.divIcon({
                     className:"aws-div-icon",
-                    html: `<span style="background-color:${color}"> ${feature.properties.WR.toFixed(1)}</span>`
+                    html: `<span style="background-color:${color}"> ${iconName}</span>`
                 }),
             })
         },
