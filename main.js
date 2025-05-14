@@ -144,24 +144,26 @@ function showDirection(jsondata) {
         pointToLayer: function (feature, latlng) {
             let iconName;
 
-            if (feature.properties.WR == 90) {
+            if (feature.properties.WR >= 67.5 && feature.properties.WR < 112.5 ) {
                 iconName = "O";
-            } else if (feature.properties.WR > 90 && feature.properties.WR < 180) {
+            } else if (feature.properties.WR >= 112.5 && feature.properties.WR < 157.5) {
                 iconName = "SO";
-            } else if (feature.properties.WR == 180) {
+            } else if (feature.properties.WR >= 157.5 && feature.properties.WR < 202.5) {
                 iconName = "S";
-            } else if (feature.properties.WR > 180 && feature.properties.WR < 270) {
+            } else if (feature.properties.WR >= 202.5 && feature.properties.WR < 247.5) {
                 iconName = "SW";
-            } else if (feature.properties.WR == 270) {
+            } else if (feature.properties.WR >= 247.5 && feature.properties.WR < 292.5) {
                 iconName = "W";
-            } else if (feature.properties.WR > 270 && feature.properties.WR < 360) {
+            } else if (feature.properties.WR >= 292.5 && feature.properties.WR < 337.5) {
                 iconName = "NW";
-            } else if (feature.properties.WR == 360) {
+            } else if (feature.properties.WR >= 337.5 && feature.properties.WR <= 360) {
                 iconName = "N";
-            } else if (feature.properties.WR > 0 && feature.properties.WR < 90) {
+            } else if (feature.properties.WR >= 0 && feature.properties.WR < 22.5) {
+                iconName = "N";
+            } else if (feature.properties.WR >= 22.5 && feature.properties.WR < 67.5) {
                 iconName = "NO";
             } else {
-                iconName = "noData";
+                iconName = null;
             }
             let color = getColor(feature.properties.WG, COLORS.wind);
             return L.marker(latlng, {
