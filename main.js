@@ -169,8 +169,8 @@ function showDirection(jsondata) {
             let color = getColor(feature.properties.WG, COLORS.wind);
             return L.marker(latlng, {
                 icon: L.divIcon({
-                    className:"aws-div-icon",
-                    html: `<span style="background-color:${color}"> ${iconName}</span>`
+                    className:"aws-div-icon-wind",
+                    html: `<span><i style="transform:rotate(${feature.properties.WR}deg);color:${color}" class="fa-solid fa-circle-arrow-down"></i></span>`,
                 }),
             })
         },
